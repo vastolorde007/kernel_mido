@@ -66,6 +66,8 @@ struct sugov_cpu {
 	struct sugov_policy *sg_policy;
 
 	bool iowait_boost_pending;
+
+        bool iowait_boost_pending;
 	unsigned int iowait_boost;
 	unsigned int iowait_boost_max;
 	u64 last_update;
@@ -220,7 +222,6 @@ static void sugov_set_iowait_boost(struct sugov_cpu *sg_cpu, u64 time,
 			return;
 
 		sg_cpu->iowait_boost_pending = true;
-
 		if (sg_cpu->iowait_boost) {
 			sg_cpu->iowait_boost <<= 1;
 			if (sg_cpu->iowait_boost > sg_cpu->iowait_boost_max)
