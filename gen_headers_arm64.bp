@@ -611,6 +611,7 @@ gen_headers_out_arm64 = [
     "linux/xilinx-v4l2-controls.h",
     "linux/zorro.h",
     "linux/zorro_ids.h",
+    "media/msm_camera-legacy.h",
     "media/cam_cpas.h",
     "media/cam_defs.h",
     "media/cam_fd.h",
