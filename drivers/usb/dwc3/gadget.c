@@ -1089,8 +1089,16 @@ static u32 dwc3_calc_trbs_left(struct dwc3_ep *dep)
 {
 	u8			trbs_left;
 
+	/*
+	 * If the enqueue & dequeue are equal then the TRB ring is either full
+	 * or empty. It's considered full when there are DWC3_TRB_NUM-1 of TRBs
+	 * pending to be processed by the driver.
+	 */
 	if (dep->trb_enqueue == dep->trb_dequeue) {
 		/*
+		 * If there is any request remained in the started_list at
+		 * this point, that means there is no TRB available.
+		 *
                  *If there is any request remained in the started_list at
                  *or empty. It's considered full when there are DWC3_TRB_NUM-1 of TRBs
                  *pending to be processed by the driver.

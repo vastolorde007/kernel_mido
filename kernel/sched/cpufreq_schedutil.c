@@ -892,7 +892,7 @@ out:
 
 fail:
 	policy->governor_data = NULL;
-	sugov_tunables_free(tunables);
+        sugov_tunables_free(tunables);
 
 stop_kthread:
 	sugov_kthread_stop(sg_policy);
@@ -923,6 +923,7 @@ static void sugov_exit(struct cpufreq_policy *policy)
 		sugov_tunables_save(policy, tunables);
 		sugov_tunables_free(tunables);
 	}
+	if (!count)
 	mutex_unlock(&global_tunables_lock);
 
 	sugov_kthread_stop(sg_policy);
